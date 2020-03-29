@@ -292,6 +292,84 @@
                     <OnClick>RR_CloseWindow()</OnClick>
                 </Scripts>
             </Button>
+			<Button name="RR_Bid_100" inherits="UIPanelButtonTemplate">
+                <Anchors>
+                    <Anchor point="LEFT" relativeTo="RR_Close_Button" relativePoint="RIGHT">
+                        <Offset>
+                            <AbsDimension x="5" y="-20" />
+                        </Offset>
+                    </Anchor>
+                </Anchors>
+                <Scripts>
+					<OnLoad>this:SetText("100");</OnLoad>
+                    <OnClick>BidRise(100, "b")</OnClick>
+                </Scripts>
+            </Button>
+			<Button name="RR_Bid_1k" inherits="UIPanelButtonTemplate">
+                <Anchors>
+                    <Anchor point="TOP" relativeTo="RR_Bid_100" relativePoint="BOTTOM">
+                        <Offset>
+                            <AbsDimension x="0" y="-5" />
+                        </Offset>
+                    </Anchor>
+                </Anchors>
+                <Scripts>
+					<OnLoad>this:SetText("1k");</OnLoad>
+                    <OnClick>BidRise(1000, "b")</OnClick>
+                </Scripts>
+            </Button>
+			<Button name="RR_Bid_5k" inherits="UIPanelButtonTemplate">
+                <Anchors>
+                    <Anchor point="TOP" relativeTo="RR_Bid_1k" relativePoint="BOTTOM">
+                        <Offset>
+                            <AbsDimension x="0" y="-5" />
+                        </Offset>
+                    </Anchor>
+                </Anchors>
+                <Scripts>
+					<OnLoad>this:SetText("5k");</OnLoad>
+                    <OnClick>BidRise(5000, "b")</OnClick>
+                </Scripts>
+            </Button>
+			<Button name="RR_Rise_100" inherits="UIPanelButtonTemplate">
+                <Anchors>
+                    <Anchor point="LEFT" relativeTo="RR_Bid_100" relativePoint="RIGHT">
+                        <Offset>
+                            <AbsDimension x="5" y="0" />
+                        </Offset>
+                    </Anchor>
+                </Anchors>
+                <Scripts>
+					<OnLoad>this:SetText("+100");</OnLoad>
+                    <OnClick>BidRise(100, "r")</OnClick>
+                </Scripts>
+            </Button>
+			<Button name="RR_Rise_1k" inherits="UIPanelButtonTemplate">
+                <Anchors>
+                    <Anchor point="TOP" relativeTo="RR_Rise_100" relativePoint="BOTTOM">
+                        <Offset>
+                            <AbsDimension x="0" y="-5" />
+                        </Offset>
+                    </Anchor>
+                </Anchors>
+                <Scripts>
+					<OnLoad>this:SetText("+1k");</OnLoad>
+                    <OnClick>BidRise(1000, "r")</OnClick>
+                </Scripts>
+            </Button>
+			<Button name="RR_Rise_5k" inherits="UIPanelButtonTemplate">
+			    <Anchors>
+                    <Anchor point="TOP" relativeTo="RR_Rise_1k" relativePoint="BOTTOM">
+                        <Offset>
+                            <AbsDimension x="0" y="-5" />
+                        </Offset>
+                    </Anchor>
+                </Anchors>
+                <Scripts>
+					<OnLoad>this:SetText("+5k");</OnLoad>
+                    <OnClick>BidRise(5000, "r")</OnClick>
+                </Scripts>
+            </Button>
         </Frames>
     </Frame>
 </Ui>

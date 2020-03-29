@@ -826,6 +826,34 @@ function RaidRoll_Event(self, event, ...)
 
 		end
 	end
+	if event == "CHAT_MSG_RAID" or "CHAT_MSG_RAID_LEADER" or  "CHAT_MSG_RAID_WARNING" then
+		local text, name = ...;
+		if arg1 ~= nil then
+			local roll = tonumber(text)
+			if type(roll) == 'number'	then
+				if roll >= 100 then
+					RR_ARollHasOccured(name,roll,0,100)	
+				else RR_ARollHasOccured(name,roll*1000,0,100)
+				end			
+			end
+		end
+	end
+end
+
+function BidRise(rate, br)	
+	local _,Roll,_ = RR_FindWinner(rr_rollID)
+	local roll_m =  math.floor(Roll/100)*100
+	
+	if br == "b" then
+		if roll_m < rate then
+			m = rate
+		end	
+	elseif br == "r" then
+		if roll_m ~= nil then	
+			m = roll_m + rate
+		end		
+	end
+	SendChatMessage(m, rr_AnnounceType)
 end
 
 function RR_ARollHasOccured(Name,Roll,Low,High)
@@ -1593,8 +1621,8 @@ l_RR_DisplayID = RR_DisplayID
 					
 					
 					if Winner  ~= "" then
-						if GetLocale() ~= "zhTW" and GetLocale() ~= "ruRU" and GetLocale() ~= "zhCN" then
-							Winner = string.upper(string.sub(Winner,1,1))..string.lower(string.sub(Winner,2))
+						if GetLocale() ~= "zhTW" and GetLocale() ~= "zhCN" then
+							Winner = string.upper(string.sub(Winner,1,2))..string.lower(string.sub(Winner,2))
 						end
 						
 						if RaidRoll_DBPC[UnitName("player")]["RR_EPGP_Enabled"] ==  true then
@@ -1608,6 +1636,17 @@ l_RR_DisplayID = RR_DisplayID
 								Winner_Message = string.format(RAIDROLL_LOCALE["won_with"], Winner,Roll)
 							else
 								Winner_Message = string.format(RAIDROLL_LOCALE["won_item_with"], Winner,rr_Item[rr_rollID],Roll)
+								-----------------------------------
+								local item = rr_Item[rr_rollID]
+								if MaxPlayers[rr_rollID] == 2 or  Roll < 101 then
+									Roll = 0
+									SendChatMessage(Winner.." бесплатно получает "..item, "GUILD")
+								end
+								local editbox=ChatEdit_ChooseBoxForSend(DEFAULT_CHAT_FRAME);
+								ChatEdit_ActivateChat(editbox);
+								editbox:SetText("/epgp ep "..Winner.." "..item.." "..-Roll);
+								ChatEdit_OnEnterPressed(editbox);
+								-----------------------------------
 							end
 						end
 					else
