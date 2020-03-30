@@ -1661,8 +1661,10 @@ l_RR_DisplayID = RR_DisplayID
 					
 					
 					if Winner  ~= "" then
-						if GetLocale() ~= "zhTW" and GetLocale() ~= "zhCN" then
-							Winner = string.upper(string.sub(Winner,1,2))..string.lower(string.sub(Winner,2))
+						if GetLocale() ~= "zhTW" and GetLocale() ~= "ruRU" and GetLocale() ~= "zhCN"then
+							Winner = string.upper(string.sub(Winner,1,1))..string.lower(string.sub(Winner,2))
+						-- elseif GetLocale() == "ruRU" then
+							-- Winner = string.upper(string.sub(Winner,1,1))..string.lower(string.sub(Winner,2))
 						end
 						
 						if RaidRoll_DBPC[UnitName("player")]["RR_EPGP_Enabled"] ==  true then
@@ -1756,7 +1758,8 @@ function RR_FindWinner(rollID)
 			for i=1,MaxPlayers[rollID] do
 				j = MaxPlayers[rollID] - i + 1
 				
-				Name_low = string.lower(RollerName[rollID][j])
+				-- Name_low = string.lower(RollerName[rollID][j])
+				Name_low = RollerName[rollID][j] -- чиним регистр
 				
 				--if RaidRoll_DB["debug"] == true then RR_Test(j .. ": " .. Name_low) end
 				
