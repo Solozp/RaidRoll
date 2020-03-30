@@ -292,7 +292,21 @@
                     <OnClick>RR_CloseWindow()</OnClick>
                 </Scripts>
             </Button>
-			<Button name="RR_Bid_100" inherits="UIPanelButtonTemplate">
+			<Button name="rollToggle" inherits="UIPanelButtonTemplate" text="Roll" hidden="true">
+                <Anchors>
+                    <Anchor point="LEFT" relativeTo="RR_Next" relativePoint="RIGHT">
+                        <Offset>
+                            <AbsDimension x="20" y="0" />
+                        </Offset>
+                    </Anchor>
+                </Anchors>
+                <Scripts>
+                    <OnClick>					
+						rollToggle()
+					</OnClick>
+                </Scripts>
+            </Button>
+			<Button name="RR_Bid_100" inherits="UIPanelButtonTemplate" hidden="false">
                 <Anchors>
                     <Anchor point="LEFT" relativeTo="RR_Close_Button" relativePoint="RIGHT">
                         <Offset>
@@ -305,7 +319,7 @@
                     <OnClick>BidRise(100, "b")</OnClick>
                 </Scripts>
             </Button>
-			<Button name="RR_Bid_1k" inherits="UIPanelButtonTemplate">
+			<Button name="RR_Bid_1k" inherits="UIPanelButtonTemplate" hidden="false">
                 <Anchors>
                     <Anchor point="TOP" relativeTo="RR_Bid_100" relativePoint="BOTTOM">
                         <Offset>
@@ -318,7 +332,7 @@
                     <OnClick>BidRise(1000, "b")</OnClick>
                 </Scripts>
             </Button>
-			<Button name="RR_Bid_5k" inherits="UIPanelButtonTemplate">
+			<Button name="RR_Bid_5k" inherits="UIPanelButtonTemplate" hidden="false">
                 <Anchors>
                     <Anchor point="TOP" relativeTo="RR_Bid_1k" relativePoint="BOTTOM">
                         <Offset>
@@ -331,7 +345,7 @@
                     <OnClick>BidRise(5000, "b")</OnClick>
                 </Scripts>
             </Button>
-			<Button name="RR_Rise_100" inherits="UIPanelButtonTemplate">
+			<Button name="RR_Rise_100" inherits="UIPanelButtonTemplate" hidden="false">
                 <Anchors>
                     <Anchor point="LEFT" relativeTo="RR_Bid_100" relativePoint="RIGHT">
                         <Offset>
@@ -344,7 +358,7 @@
                     <OnClick>BidRise(100, "r")</OnClick>
                 </Scripts>
             </Button>
-			<Button name="RR_Rise_1k" inherits="UIPanelButtonTemplate">
+			<Button name="RR_Rise_1k" inherits="UIPanelButtonTemplate" hidden="false">
                 <Anchors>
                     <Anchor point="TOP" relativeTo="RR_Rise_100" relativePoint="BOTTOM">
                         <Offset>
@@ -357,7 +371,7 @@
                     <OnClick>BidRise(1000, "r")</OnClick>
                 </Scripts>
             </Button>
-			<Button name="RR_Rise_5k" inherits="UIPanelButtonTemplate">
+			<Button name="RR_Rise_5k" inherits="UIPanelButtonTemplate" hidden="false">
 			    <Anchors>
                     <Anchor point="TOP" relativeTo="RR_Rise_1k" relativePoint="BOTTOM">
                         <Offset>

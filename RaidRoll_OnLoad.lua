@@ -607,6 +607,39 @@ function RR_Roll_Options_Toggle()
 
 
 end
+
+function RR_BidRise_Toggle()
+
+	if RR_RightFrame:IsShown() then
+		RR_RightFrame:Hide()
+	else
+		RR_RightFrame:Show()
+	end
+
+
+end
+-- function rollToggle()
+						-- print(0)
+						-- if this.RR_Bid_100:IsShow() then
+							-- this.RR_Bid_100:Hide()
+							-- this.RR_Bid_1k:Hide()
+							-- this.RR_Bid_5k:Hide()
+							-- this.RR_Rise_100:Hide()
+							-- this.RR_Rise_1k:Hide()
+							-- this.RR_Rise_5k:Hide()
+							-- print(1)
+						 -- else
+							-- this.RR_Bid_100:Show()
+							-- this.RR_Bid_1k:Show()
+							-- this.RR_Bid_5k:Show()
+							-- this.RR_Rise_100:Show()
+							-- this.RR_Rise_1k:Show()
+							-- this.RR_Rise_5k:Show()
+							-- print(2)
+						-- end
+					-- end
+
+
 ----------------------------------------------------------------------------------------------
 
 function RaidRoll_Event(self, event, ...)
@@ -829,12 +862,19 @@ function RaidRoll_Event(self, event, ...)
 	if event == "CHAT_MSG_RAID" or "CHAT_MSG_RAID_LEADER" or  "CHAT_MSG_RAID_WARNING" then
 		local text, name = ...;
 		if arg1 ~= nil then
+			text = string.gsub(text, ",", ".")
 			local roll = tonumber(text)
 			if type(roll) == 'number'	then
 				if roll >= 100 then
 					RR_ARollHasOccured(name,roll,0,100)	
 				else RR_ARollHasOccured(name,roll*1000,0,100)
-				end			
+				end
+				if time() > RR_Timestamp + 49 and time() < RR_Timestamp + 60 then
+					RR_Timestamp = RR_Timestamp + 10
+					-- RR_FinishRolling(true,10)
+					SendChatMessage("Розыгрыш продлён на 10 секунд", rr_AnnounceType)
+				elseif time() > RR_Timestamp + 60 then
+				end
 			end
 		end
 	end

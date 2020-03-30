@@ -97,7 +97,39 @@ function RR_ExtraFrame_Options()
 	RR_BottomFrame:SetScript("OnMouseUp",function()
 	  _G["RR_RollFrame"]:StopMovingOrSizing()
 	end)
+-------------------------------------------------------------
+	-- RR_RightFrame = CreateFrame("Frame","RR_Frame",RR_RollFrame)
 
+	-- local backdrop = {
+	  -- bgFile = "Interface\\DialogFrame\\UI-DialogBox-Background",  -- path to the background texture
+	  -- edgeFile = "Interface\\Tooltips\\UI-Tooltip-Border",  -- path to the border texture
+	  
+	  -- tile = false,    -- true to repeat the background texture to fill the frame, false to scale it
+	  -- tileSize = 32,  -- size (width or height) of the square repeating background tiles (in pixels)
+	  -- edgeSize = 20,  -- thickness of edge segments and square size of edge corners (in pixels)
+	  -- insets = {    -- distance from the edges of the frame to those of the background texture (in pixels)
+	    -- left = 4,
+	    -- right = 4,
+	    -- top = 4,
+	    -- bottom = 4
+	  -- }
+	-- }
+
+
+	-- RR_RightFrame:SetBackdrop(backdrop)
+
+	-- --RR_BottomFrame:SetFrameStrata("MEDIUM")
+	-- RR_RightFrame:SetWidth(100) -- Set these to whatever height/width is needed 
+	-- RR_RightFrame:SetHeight(100) -- for your Texture
+	-- RR_RightFrame:SetPoint("Left",RR_RollFrame,"Right",6,0);
+
+	-- RR_RightFrame:EnableMouse(true)
+	-- RR_RightFrame:SetScript("OnMouseDown",function()
+	  -- _G["RR_RollFrame"]:StartMoving()
+	-- end)
+	-- RR_RightFrame:SetScript("OnMouseUp",function()
+	  -- _G["RR_RollFrame"]:StopMovingOrSizing()
+	-- end)
 
 --------------------------------------------------------------
 -- Hide the options frame
@@ -246,13 +278,30 @@ function RR_ExtraFrame_Options()
 	RR_Roll_RollButton:SetScript("OnEnter",function(self) RR_MouseOverTooltip(self:GetName())	end)
 	RR_Roll_RollButton:SetScript("OnLeave", function() GameTooltip:Hide()	end)
 	
--- options menu button
-	RR_Roll_Options = CreateFrame("Button", "RaidRoll_OptionButton", RR_RollFrame, "UIPanelButtonTemplate")
-	RR_Roll_Options:SetWidth(18)
-	RR_Roll_Options:SetHeight(18)
-	RR_Roll_Options:SetPoint("Bottom", RR_RollFrame, "Bottom", 74, 11)
-	RR_Roll_Options:SetText("v")
-	RR_Roll_Options:SetScript("OnClick",RR_Roll_Options_Toggle)
+-- -- options menu button
+	-- RR_Roll_Options = CreateFrame("Button", "RaidRoll_OptionButton", RR_RollFrame, "UIPanelButtonTemplate")
+	-- RR_Roll_Options:SetWidth(18)
+	-- RR_Roll_Options:SetHeight(18)
+	-- RR_Roll_Options:SetPoint("Bottom", RR_RollFrame, "Bottom", 74, 11)
+	-- RR_Roll_Options:SetText("v")
+	-- RR_Roll_Options:SetScript("OnClick",RR_Roll_Options_Toggle)
+
+	
+-- -- bid and rise menu button
+	-- RR_BidRise = CreateFrame("Button", "RR_BidRise", RR_RollFrame, "UIPanelButtonTemplate")
+	-- RR_BidRise:SetWidth(50)
+	-- RR_BidRise:SetHeight(18)
+	-- RR_BidRise:SetPoint("Left", RaidRoll_OptionButton, "Right", 5, 0)
+	-- RR_BidRise:SetText("Roll")
+	-- RR_BidRise:SetScript("OnClick",RR_BidRise_Toggle)
+	
+	-- RR_Bid_100 = CreateFrame("Button", "RR_Bid_100", RR_BidRise, "UIPanelButtonTemplate")
+	-- RR_Bid_100:SetWidth(50)
+	-- RR_Bid_100:SetHeight(18)
+	-- RR_Bid_100:SetPoint("TopLeft", RR_BidRise, "TopRight", 5, 5)
+	-- RR_Bid_100:SetText("100")
+	-- RR_Bid_100:SetScript("OnClick",  )
+	
 	
 	
 -- RaidRoll_AnnounceWinnerButton
