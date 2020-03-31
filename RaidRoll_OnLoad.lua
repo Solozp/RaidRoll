@@ -608,37 +608,13 @@ function RR_Roll_Options_Toggle()
 
 end
 
-function RR_BidRise_Toggle()
-
+function rollToggle()
 	if RR_RightFrame:IsShown() then
 		RR_RightFrame:Hide()
 	else
 		RR_RightFrame:Show()
 	end
-
-
 end
--- function rollToggle()
-						-- print(0)
-						-- if this.RR_Bid_100:IsShow() then
-							-- this.RR_Bid_100:Hide()
-							-- this.RR_Bid_1k:Hide()
-							-- this.RR_Bid_5k:Hide()
-							-- this.RR_Rise_100:Hide()
-							-- this.RR_Rise_1k:Hide()
-							-- this.RR_Rise_5k:Hide()
-							-- print(1)
-						 -- else
-							-- this.RR_Bid_100:Show()
-							-- this.RR_Bid_1k:Show()
-							-- this.RR_Bid_5k:Show()
-							-- this.RR_Rise_100:Show()
-							-- this.RR_Rise_1k:Show()
-							-- this.RR_Rise_5k:Show()
-							-- print(2)
-						-- end
-					-- end
-
 
 ----------------------------------------------------------------------------------------------
 
@@ -862,7 +838,7 @@ function RaidRoll_Event(self, event, ...)
 	if event == "CHAT_MSG_RAID" or "CHAT_MSG_RAID_LEADER" or  "CHAT_MSG_RAID_WARNING" then
 		local text, name = ...;
 		if arg1 ~= nil then
-			text = string.gsub(text, ",", ".")
+			text = text:gsub(",", ".")
 			local roll = tonumber(text)
 			if type(roll) == 'number'	then
 				if roll >= 100 then
@@ -1663,8 +1639,6 @@ l_RR_DisplayID = RR_DisplayID
 					if Winner  ~= "" then
 						if GetLocale() ~= "zhTW" and GetLocale() ~= "ruRU" and GetLocale() ~= "zhCN"then
 							Winner = string.upper(string.sub(Winner,1,1))..string.lower(string.sub(Winner,2))
-						-- elseif GetLocale() == "ruRU" then
-							-- Winner = string.upper(string.sub(Winner,1,1))..string.lower(string.sub(Winner,2))
 						end
 						
 						if RaidRoll_DBPC[UnitName("player")]["RR_EPGP_Enabled"] ==  true then
